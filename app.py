@@ -24,8 +24,8 @@ app = Flask(__name__)
 def home():
    return render_template('index.html')
 
-@app.route("/bucket", methods=["POST"])
-def web_bucket_post():
+@app.route("/movie", methods=["POST"])
+def web_movie_post():
     # sample_receive = request.form['sample_give']
     name_receive = request.form['name_give']
     address_receive = request.form['address_give']
@@ -38,8 +38,8 @@ def web_bucket_post():
     db.orders.insert_one(doc)
     return jsonify({'msg': 'complete!'})
 
-@app.route("/bucket", methods=["GET"])
-def web_bucket_get():
+@app.route("/movie", methods=["GET"])
+def web_movie_get():
     orders_list = list(db.orders.find({}, {'_id': False}))
     return jsonify({'orders': orders_list})
 
